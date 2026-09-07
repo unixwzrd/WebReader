@@ -14,6 +14,7 @@ The toolbar button injects the familiar floating Restart, Play, Pause, Stop, and
 - Restart begins at the detected article title.
 - Hide removes the controls from view until the Safari toolbar button is pressed again.
 - The extension requests temporary access to the active tab rather than injecting itself into every page automatically.
+- When a site blocks `blob:` media through its Content Security Policy, WebReader falls back to decoded in-memory Web Audio playback.
 
 ## Test it in Safari
 

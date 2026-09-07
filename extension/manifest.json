@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "WebReader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read selected text or the main article through a local TTS bridge.",
   "permissions": [
     "activeTab",

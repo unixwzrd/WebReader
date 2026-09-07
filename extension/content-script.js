@@ -117,6 +117,7 @@
   const hideButton = shadow.querySelector('[data-action="hide"]');
   const status = shadow.querySelector(".status");
   const audio = document.createElement("audio");
+  const AudioContextClass = globalThis.AudioContext || globalThis.webkitAudioContext;
   const silentWav = "data:audio/wav;base64,UklGRsQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
   audio.preload = "auto";
   audio.setAttribute("playsinline", "");
@@ -127,6 +128,9 @@
   let paused = false;
   let stopped = true;
   let activeObjectUrl = null;
+  let audioContext = null;
+  let activeBufferSource = null;
+  let usingWebAudio = false;
   let bufferedAudio = new Map();
   let queuedTarget = null;
   let lastCaretRange = null;
@@ -149,6 +153,26 @@
       audio.src = silentWav;
     }
     audio.play().catch(() => {});
+
+    if (AudioContextClass) {
+      const context = ensureAudioContext();
+      context.resume().catch(() => {});
+      const source = context.createBufferSource();
+      source.buffer = context.createBuffer(1, 1, context.sampleRate);
+      source.connect(context.destination);
+      source.start(0);
+      source.addEventListener("ended", () => source.disconnect(), { once: true });
+    }
+  }
+
+  function ensureAudioContext() {
+    if (!AudioContextClass) {
+      throw new Error("This browser does not provide Web Audio playback.");
+    }
+    if (!audioContext || audioContext.state === "closed") {
+      audioContext = new AudioContextClass();
+    }
+    return audioContext;
   }
 
   function rangeContainer(range) {
@@ -284,13 +308,13 @@
     });
   }
 
-  function base64ToBlob(base64, contentType) {
+  function base64ToBytes(base64) {
     const binary = atob(base64);
     const bytes = new Uint8Array(binary.length);
     for (let index = 0; index < binary.length; index += 1) {
       bytes[index] = binary.charCodeAt(index);
     }
-    return new Blob([bytes], { type: contentType });
+    return bytes;
   }
 
   async function loadAudio(index, expectedSession) {
@@ -305,7 +329,10 @@
       if (expectedSession !== sessionId) {
         return null;
       }
-      return URL.createObjectURL(base64ToBlob(response.audioBase64, response.contentType));
+      return {
+        bytes: base64ToBytes(response.audioBase64),
+        contentType: response.contentType,
+      };
     })();
     bufferedAudio.set(index, promise);
     return promise;
@@ -331,8 +358,8 @@
 
     try {
       setStatus(`Preparing ${currentIndex + 1} of ${chunks.length}...`);
-      const url = await loadAudio(currentIndex, expectedSession);
-      if (!url || expectedSession !== sessionId || stopped) {
+      const audioData = await loadAudio(currentIndex, expectedSession);
+      if (!audioData || expectedSession !== sessionId || stopped) {
         return;
       }
       if (paused) {
@@ -340,20 +367,56 @@
         return;
       }
 
-      releaseAudioUrl();
-      activeObjectUrl = url;
-      audio.src = url;
-      audio.currentTime = 0;
-      audio.onended = () => {
+      const chunkEnded = () => {
         if (expectedSession !== sessionId || stopped) {
           return;
         }
         releaseAudioUrl();
+        activeBufferSource = null;
         bufferedAudio.delete(currentIndex);
         currentIndex += 1;
         playCurrent(expectedSession);
       };
-      await audio.play();
+
+      releaseAudioUrl();
+      activeObjectUrl = URL.createObjectURL(new Blob([audioData.bytes], { type: audioData.contentType }));
+      audio.src = activeObjectUrl;
+      audio.currentTime = 0;
+      audio.onended = chunkEnded;
+      usingWebAudio = false;
+      try {
+        await audio.play();
+      } catch (nativeError) {
+        audio.pause();
+        audio.onended = null;
+        audio.removeAttribute("src");
+        releaseAudioUrl();
+        if (!AudioContextClass || (nativeError.name !== "NotSupportedError" && !/not supported/i.test(nativeError.message))) {
+          throw nativeError;
+        }
+
+        const context = ensureAudioContext();
+        const arrayBuffer = audioData.bytes.buffer.slice(
+          audioData.bytes.byteOffset,
+          audioData.bytes.byteOffset + audioData.bytes.byteLength,
+        );
+        let decoded;
+        try {
+          decoded = await context.decodeAudioData(arrayBuffer);
+        } catch (decodeError) {
+          throw new Error("Safari could not decode the returned audio.", { cause: decodeError });
+        }
+        if (expectedSession !== sessionId || stopped) {
+          return;
+        }
+        await context.resume();
+        activeBufferSource = context.createBufferSource();
+        activeBufferSource.buffer = decoded;
+        activeBufferSource.connect(context.destination);
+        activeBufferSource.addEventListener("ended", chunkEnded, { once: true });
+        activeBufferSource.start(0);
+        usingWebAudio = true;
+      }
       setStatus(`Playing ${currentIndex + 1} of ${chunks.length} from ${playbackScope}.`);
       if (currentIndex + 1 < chunks.length) {
         loadAudio(currentIndex + 1, expectedSession).catch(() => {});
@@ -377,9 +440,22 @@
     audio.onended = null;
     audio.removeAttribute("src");
     audio.load();
+    if (activeBufferSource) {
+      try {
+        activeBufferSource.stop();
+      } catch (_error) {
+        // The source may already have ended.
+      }
+      activeBufferSource.disconnect();
+      activeBufferSource = null;
+    }
+    if (usingWebAudio && audioContext?.state === "running") {
+      audioContext.suspend().catch(() => {});
+    }
+    usingWebAudio = false;
     releaseAudioUrl();
     for (const value of bufferedAudio.values()) {
-      Promise.resolve(value).then((url) => url && URL.revokeObjectURL(url)).catch(() => {});
+      Promise.resolve(value).catch(() => {});
     }
     bufferedAudio.clear();
     chunks = [];
@@ -393,7 +469,11 @@
   async function startOrResume(forcedTarget = null) {
     if (!forcedTarget && paused && !stopped) {
       paused = false;
-      await audio.play();
+      if (usingWebAudio) {
+        await ensureAudioContext().resume();
+      } else {
+        await audio.play();
+      }
       setControls({ playing: true });
       setStatus(`Playing ${currentIndex + 1} of ${chunks.length} from ${playbackScope}.`);
       return;
@@ -475,7 +555,11 @@
       return;
     }
     paused = true;
-    audio.pause();
+    if (usingWebAudio) {
+      audioContext.suspend().catch(() => {});
+    } else {
+      audio.pause();
+    }
     setControls({ playing: true, isPaused: true });
     setStatus(`Paused at ${currentIndex + 1} of ${chunks.length}.`);
   });
