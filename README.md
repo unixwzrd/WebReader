@@ -1,5 +1,7 @@
 # WebReader
 
+![WebReader banner](assets/webreader-banner.png)
+
 WebReader is a personal Safari Web Extension that reads selected text, text after the cursor, or the main article on the current page through a local TTS Bridge. Browser playback remains temporary and is not written to disk.
 
 The toolbar button injects the familiar floating Restart, Play, Pause, Stop, and Hide controls into the current page. The extension uses Mozilla Readability for article detection, then applies additional filtering for navigation, advertising, forms, comments, related content, links, and other page furniture.
@@ -16,7 +18,7 @@ The toolbar button injects the familiar floating Restart, Play, Pause, Stop, and
 ## Test it in Safari
 
 ```bash
-cd ~/projects/AI-PROJECTS/webreader
+cd WebReader
 ./scripts/build-safari
 open safari/WebReader/WebReader.xcodeproj
 ```
@@ -28,7 +30,7 @@ The Xcode project is configured for the same Apple development team used by the 
 Point the included loopback relay at an OpenAI-compatible speech endpoint:
 
 ```bash
-cd ~/projects/AI-PROJECTS/webreader
+cd WebReader
 TTS_BRIDGE_URL=http://127.0.0.1:11440/v1 \
 TTS_BRIDGE_VOICE=your-voice-alias \
 ./scripts/start-helper
@@ -57,6 +59,12 @@ Open an external article and verify selection playback first, then cursor playba
 - `scripts/build-safari` compiles the Safari application and extension. Use Xcode to sign and run the local development build.
 
 The generated Xcode project references the files in `extension/`, so normal JavaScript changes do not require regenerating the project.
+
+## Project boundaries
+
+WebReader does not import code, configuration, or assets from another repository. The Safari extension, macOS wrapper, loopback relay, tests, icons, and vendored Readability library all live here.
+
+Runtime speech generation is deliberately kept behind an OpenAI-compatible HTTP endpoint selected with `TTS_BRIDGE_URL`. That endpoint is an external service boundary, not a source or build dependency. WebReader can therefore be used with any compatible local TTS service without checking out one of the maintainer's other projects.
 
 ## Maintainer dependencies
 
