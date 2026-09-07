@@ -1,0 +1,16 @@
+{
+  "name": "webreader",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal browser article reader backed by a local TTS bridge",
+  "scripts": {
+    "sync-vendor": "node scripts/sync-vendor.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

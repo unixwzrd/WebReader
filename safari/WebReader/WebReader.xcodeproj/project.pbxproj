@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5351A3B30461DC200CE895E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5351A3A30461DC200CE895E /* AppDelegate.swift */; };
+		A5351A3F30461DC200CE895E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = A5351A3D30461DC200CE895E /* Main.html */; };
+		A5351A4130461DC200CE895E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5351A4030461DC200CE895E /* Icon.png */; };
+		A5351A4330461DC200CE895E /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = A5351A4230461DC200CE895E /* Style.css */; };
+		A5351A4530461DC200CE895E /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = A5351A4430461DC200CE895E /* Script.js */; };
+		A5351A4730461DC200CE895E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5351A4630461DC200CE895E /* ViewController.swift */; };
+		A5351A4A30461DC200CE895E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5351A4830461DC200CE895E /* Main.storyboard */; };
+		A5351A4C30461DC300CE895E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5351A4B30461DC300CE895E /* Assets.xcassets */; };
+		A5351A5330461DC300CE895E /* WebReader Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5351A5230461DC300CE895E /* WebReader Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5351A5830461DC300CE895E /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5351A5730461DC300CE895E /* SafariWebExtensionHandler.swift */; };
+		A5351A6930461DC300CE895E /* extractor.js in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6430461DC300CE895E /* extractor.js */; };
+		A5351A6A30461DC300CE895E /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6530461DC300CE895E /* background.js */; };
+		A5351A6B30461DC300CE895E /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6630461DC300CE895E /* manifest.json */; };
+		A5351A6C30461DC300CE895E /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6730461DC300CE895E /* content-script.js */; };
+		A5351A6D30461DC300CE895E /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6830461DC300CE895E /* vendor */; };
+		A5351A6E30461DC300CE895E /* icons in Resources */ = {isa = PBXBuildFile; fileRef = A5351A6F30461DC300CE895E /* icons */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5351A5430461DC300CE895E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5351A2F30461DC200CE895E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5351A5130461DC300CE895E;
+			remoteInfo = "WebReader Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5351A5F30461DC300CE895E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A5351A5330461DC300CE895E /* WebReader Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A5351A3730461DC200CE895E /* WebReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5351A3A30461DC200CE895E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5351A3E30461DC200CE895E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		A5351A4030461DC200CE895E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A5351A4230461DC200CE895E /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		A5351A4430461DC200CE895E /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		A5351A4630461DC200CE895E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5351A4930461DC200CE895E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5351A4B30461DC300CE895E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5351A4D30461DC300CE895E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5351A5230461DC300CE895E /* WebReader Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WebReader Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5351A5730461DC300CE895E /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		A5351A5930461DC300CE895E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5351A6430461DC300CE895E /* extractor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = extractor.js; path = ../../../extension/extractor.js; sourceTree = "<group>"; };
+		A5351A6530461DC300CE895E /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../../extension/background.js; sourceTree = "<group>"; };
+		A5351A6630461DC300CE895E /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../extension/manifest.json; sourceTree = "<group>"; };
+		A5351A6730461DC300CE895E /* content-script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "content-script.js"; path = "../../../extension/content-script.js"; sourceTree = "<group>"; };
+		A5351A6830461DC300CE895E /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; name = vendor; path = ../../../extension/vendor; sourceTree = "<group>"; };
+		A5351A6F30461DC300CE895E /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../../extension/icons; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5351A3430461DC200CE895E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5351A4F30461DC300CE895E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5351A2E30461DC200CE895E = {
+			isa = PBXGroup;
+			children = (
+				A5351A3930461DC200CE895E /* WebReader */,
+				A5351A5630461DC300CE895E /* WebReader Extension */,
+				A5351A3830461DC200CE895E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5351A3830461DC200CE895E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5351A3730461DC200CE895E /* WebReader.app */,
+				A5351A5230461DC300CE895E /* WebReader Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5351A3930461DC200CE895E /* WebReader */ = {
+			isa = PBXGroup;
+			children = (
+				A5351A3A30461DC200CE895E /* AppDelegate.swift */,
+				A5351A4630461DC200CE895E /* ViewController.swift */,
+				A5351A4830461DC200CE895E /* Main.storyboard */,
+				A5351A4B30461DC300CE895E /* Assets.xcassets */,
+				A5351A4D30461DC300CE895E /* Info.plist */,
+				A5351A3C30461DC200CE895E /* Resources */,
+			);
+			path = WebReader;
+			sourceTree = "<group>";
+		};
+		A5351A3C30461DC200CE895E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5351A3D30461DC200CE895E /* Main.html */,
+				A5351A4030461DC200CE895E /* Icon.png */,
+				A5351A4230461DC200CE895E /* Style.css */,
+				A5351A4430461DC200CE895E /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5351A5630461DC300CE895E /* WebReader Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5351A6330461DC300CE895E /* Resources */,
+				A5351A5730461DC300CE895E /* SafariWebExtensionHandler.swift */,
+				A5351A5930461DC300CE895E /* Info.plist */,
+			);
+			path = "WebReader Extension";
+			sourceTree = "<group>";
+		};
+		A5351A6330461DC300CE895E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5351A6430461DC300CE895E /* extractor.js */,
+				A5351A6530461DC300CE895E /* background.js */,
+				A5351A6630461DC300CE895E /* manifest.json */,
+				A5351A6730461DC300CE895E /* content-script.js */,
+				A5351A6830461DC300CE895E /* vendor */,
+				A5351A6F30461DC300CE895E /* icons */,
+			);
+			name = Resources;
+			path = "WebReader Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5351A3630461DC200CE895E /* WebReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5351A6030461DC300CE895E /* Build configuration list for PBXNativeTarget "WebReader" */;
+			buildPhases = (
+				A5351A3330461DC200CE895E /* Sources */,
+				A5351A3430461DC200CE895E /* Frameworks */,
+				A5351A3530461DC200CE895E /* Resources */,
+				A5351A5F30461DC300CE895E /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5351A5530461DC300CE895E /* PBXTargetDependency */,
+			);
+			name = WebReader;
+			packageProductDependencies = (
+			);
+			productName = WebReader;
+			productReference = A5351A3730461DC200CE895E /* WebReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5351A5130461DC300CE895E /* WebReader Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5351A5C30461DC300CE895E /* Build configuration list for PBXNativeTarget "WebReader Extension" */;
+			buildPhases = (
+				A5351A4E30461DC300CE895E /* Sources */,
+				A5351A4F30461DC300CE895E /* Frameworks */,
+				A5351A5030461DC300CE895E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WebReader Extension";
+			packageProductDependencies = (
+			);
+			productName = "WebReader Extension";
+			productReference = A5351A5230461DC300CE895E /* WebReader Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5351A2F30461DC200CE895E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					A5351A3630461DC200CE895E = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					A5351A5130461DC300CE895E = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				};
+			};
+			buildConfigurationList = A5351A3230461DC200CE895E /* Build configuration list for PBXProject "WebReader" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5351A2E30461DC200CE895E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A5351A3830461DC200CE895E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5351A3630461DC200CE895E /* WebReader */,
+				A5351A5130461DC300CE895E /* WebReader Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5351A3530461DC200CE895E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5351A4130461DC200CE895E /* Icon.png in Resources */,
+				A5351A4A30461DC200CE895E /* Main.storyboard in Resources */,
+				A5351A4530461DC200CE895E /* Script.js in Resources */,
+				A5351A3F30461DC200CE895E /* Main.html in Resources */,
+				A5351A4C30461DC300CE895E /* Assets.xcassets in Resources */,
+				A5351A4330461DC200CE895E /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5351A5030461DC300CE895E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5351A6E30461DC300CE895E /* icons in Resources */,
+				A5351A6D30461DC300CE895E /* vendor in Resources */,
+				A5351A6A30461DC300CE895E /* background.js in Resources */,
+				A5351A6C30461DC300CE895E /* content-script.js in Resources */,
+				A5351A6B30461DC300CE895E /* manifest.json in Resources */,
+				A5351A6930461DC300CE895E /* extractor.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5351A3330461DC200CE895E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5351A4730461DC200CE895E /* ViewController.swift in Sources */,
+				A5351A3B30461DC200CE895E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5351A4E30461DC300CE895E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5351A5830461DC300CE895E /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5351A5530461DC300CE895E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5351A5130461DC300CE895E /* WebReader Extension */;
+			targetProxy = A5351A5430461DC300CE895E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5351A3D30461DC200CE895E /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5351A3E30461DC200CE895E /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		A5351A4830461DC200CE895E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5351A4930461DC200CE895E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5351A5A30461DC300CE895E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5351A5B30461DC300CE895E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A5351A5D30461DC300CE895E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WebReader Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "WebReader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.WebReader.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A5351A5E30461DC300CE895E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WebReader Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "WebReader Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.WebReader.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A5351A6130461DC300CE895E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WebReader/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WebReader;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.WebReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A5351A6230461DC300CE895E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69H57JTW3S;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WebReader/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WebReader;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.unixwzrd.WebReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5351A3230461DC200CE895E /* Build configuration list for PBXProject "WebReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5351A5A30461DC300CE895E /* Debug */,
+				A5351A5B30461DC300CE895E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5351A5C30461DC300CE895E /* Build configuration list for PBXNativeTarget "WebReader Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5351A5D30461DC300CE895E /* Debug */,
+				A5351A5E30461DC300CE895E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5351A6030461DC300CE895E /* Build configuration list for PBXNativeTarget "WebReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5351A6130461DC300CE895E /* Debug */,
+				A5351A6230461DC300CE895E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5351A2F30461DC200CE895E /* Project object */;
+}

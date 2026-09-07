@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+relay="$project_dir/helper/webreader_tts_relay.py"
+
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$relay" "$@"
+fi
+
+echo "WebReader requires Python 3 to run its local TTS relay." >&2
+exit 1
